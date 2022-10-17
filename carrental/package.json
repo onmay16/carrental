@@ -2,7 +2,6 @@
   "name": "carrental",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://onmay16.github.io/carrental/",
   "dependencies": {
     "bootstrap": "^5.2.2",
     "cra-template": "1.2.0",
@@ -19,8 +18,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
-    "predeploy": "yarn build"
+    "predeploy": "yarn deploy"
   },
+  "homepage": "https://onmay16.github.io/carrental/",
   "eslintConfig": {
     "extends": [
       "react-app",
