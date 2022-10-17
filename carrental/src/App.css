@@ -37,6 +37,42 @@ hr {
   color: #E5E5E5;
 }
 
+a {
+  cursor: pointer;
+}
+
+.body-section {
+  display: flex;
+  margin-top: 20px;
+}
+
+.body-row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.date-picker {
+  height: 38px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.list-group-item {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (max-width: 800px) {
+  .body-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
