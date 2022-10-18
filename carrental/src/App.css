@@ -50,6 +50,8 @@ a {
   display: flex;
   flex-direction: row;
   margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .date-picker {
@@ -66,10 +68,17 @@ a {
   padding-right: 20px;
 }
 
+.space {
+  width: 50px;
+}
+
 @media (max-width: 800px) {
   .body-row {
     display: flex;
     flex-direction: column;
+  }
+  .space {
+    height: 50px;
   }
 }
 

@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { useState, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 import ko from 'date-fns/locale/ko';
 
 import Container from 'react-bootstrap/Container';
@@ -41,6 +41,7 @@ function App() {
   }
 
   useEffect(() => {
+
     startDate.setDate(startDate.getDate()+2);
     startDate.setHours(10);
     startDate.setMinutes(0);
@@ -96,8 +97,8 @@ function App() {
         </Container>
       </Navbar>
       <div className='body-section'>
-        <div className='body-row'>
-          <ListGroup style={{ marginRight: '50px' }}>
+        <div className='body-row' >
+          <ListGroup>
             <ListGroup.Item className='list-group-item'>
               <h6>픽업일자</h6>
               <DatePicker
@@ -107,8 +108,16 @@ function App() {
                   setStartDate(date);
                 }}
                 minDate={startDate}
+                popperProps={{
+                  positionFixed: true
+                }}
+                popperModifiers={{
+                  preventOverflow: {
+                    enabled: true,
+                }}}
                 dateFormat=" yyyy-MM-dd"
                 locale='ko' />
+
             </ListGroup.Item>
             <ListGroup.Item className='list-group-item'>
               <h6>픽업시간</h6>
@@ -125,6 +134,13 @@ function App() {
                 minTime={minTime}
                 maxTime={maxTime}
                 timeIntervals={30}
+                popperProps={{
+                  positionFixed: true
+                }}
+                popperModifiers={{
+                  preventOverflow: {
+                    enabled: true,
+                }}}
                 timeCaption="시간"
                 locale='ko' />
             </ListGroup.Item>
@@ -135,6 +151,13 @@ function App() {
                 selected={endDate}
                 onSelect={(date) => {setEndDate(date)}}
                 minDate={startDate}
+                popperProps={{
+                  positionFixed: true
+                }}
+                popperModifiers={{
+                  preventOverflow: {
+                    enabled: true,
+                }}}
                 dateFormat=" yyyy-MM-dd"
                 locale='ko' />
             </ListGroup.Item>
@@ -151,6 +174,13 @@ function App() {
                 showTimeSelectOnly
                 timeIntervals={30}
                 excludeTimes={excludedTime}
+                popperProps={{
+                  positionFixed: true
+                }}
+                popperModifiers={{
+                  preventOverflow: {
+                    enabled: true,
+                }}}
                 timeCaption="시간"
                 dateFormat=" HH:mm"
                 locale='ko' />
@@ -164,8 +194,8 @@ function App() {
               </div>
             </ListGroup.Item>
           </ListGroup>
-          <br />
-          <div style={{ margin: 'auto' }}>
+          <div className='space'/>
+          <div style={{ margin:'auto' }}>
             <div style={{ textAlign:'left', color: 'red', fontWeight:600 }}>
               <div>* 견적계산기는 렌트 비용 참고용입니다.</div>
               <div>* 자세한 내용은 <a href='https://cafe.naver.com/guamfree/335157'>드림렌트카 예약안내</a>에서 확인해주세요.</div>
