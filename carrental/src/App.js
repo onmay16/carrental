@@ -20,7 +20,7 @@ function App() {
 
   const [minTime, setMinTime] = useState(new Date());
   const [maxTime, setMaxTime] = useState(new Date());
-  const [excludedTime, setExcludedTime] = useState([]);
+  // const [excludedTime, setExcludedTime] = useState([]);
 
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
@@ -31,13 +31,15 @@ function App() {
     const calculatedDays = Math.floor(totalHours / 24)
     const calculatedHours = (totalHours % 24).toFixed(1);
 
-    if (calculatedHours >= 7) {
-      setDays(calculatedDays+1);
-      setHours(0);
-    } else {
-      setDays(calculatedDays)
-      setHours(calculatedHours)
-    }
+    // if (calculatedHours >= 7) {
+    //   setDays(calculatedDays+1);
+    //   setHours(0);
+    // } else {
+    //   setDays(calculatedDays)
+    //   setHours(calculatedHours)
+    // }
+    setDays(calculatedDays)
+    setHours(calculatedHours)
   }
 
   useEffect(() => {
@@ -56,17 +58,17 @@ function App() {
     maxTime.setHours(18);
     maxTime.setMinutes(30);
 
-    const notAvailableTime = []
-    for (let count = 3; count < 8; count += 0.5) {
-      let time = new Date()
-      if (count % 1 !== 0) {
-        time.setHours(Math.floor(count), 30, 0);
-      } else {
-        time.setHours(Math.floor(count), 0, 0);
-      }
-      notAvailableTime.push(time);
-    };
-    setExcludedTime(notAvailableTime);
+    // const notAvailableTime = []
+    // for (let count = 3; count < 8; count += 0.5) {
+    //   let time = new Date()
+    //   if (count % 1 !== 0) {
+    //     time.setHours(Math.floor(count), 30, 0);
+    //   } else {
+    //     time.setHours(Math.floor(count), 0, 0);
+    //   }
+    //   notAvailableTime.push(time);
+    // };
+    // setExcludedTime(notAvailableTime);
   }, [])
 
   useEffect(() => {
@@ -91,7 +93,7 @@ function App() {
       <Navbar style={{ backgroundColor:'#343A3F' }}>
         <Container>
           <Navbar.Brand>
-            <span style={{ color:'#FFFFFF' }}>괌자길 드림렌트카 </span>
+            <span style={{ color:'#FFFFFF' }}>괌자길 버젯렌트가 </span>
             <span style={{ fontSize: "15px", color:'#FFFFFF' }}>견적계산기</span>
           </Navbar.Brand>
         </Container>
@@ -131,8 +133,8 @@ function App() {
                 showTimeSelect
                 showTimeSelectOnly
                 dateFormat=" HH:mm"
-                minTime={minTime}
-                maxTime={maxTime}
+                // minTime={minTime}
+                // maxTime={maxTime}
                 timeIntervals={30}
                 popperProps={{
                   positionFixed: true
@@ -173,7 +175,7 @@ function App() {
                 showTimeSelect
                 showTimeSelectOnly
                 timeIntervals={30}
-                excludeTimes={excludedTime}
+                // excludeTimes={excludedTime}
                 popperProps={{
                   positionFixed: true
                 }}
@@ -195,16 +197,12 @@ function App() {
             </ListGroup.Item>
           </ListGroup>
           <div className='space'/>
-          <div style={{ margin:'auto' }}>
+          <div style={{ margin:'auto', width:'670px' }}>
             <div style={{ textAlign:'left', color: 'red', fontWeight:600 }}>
               <div>* 견적계산기는 렌트 비용 참고용입니다.</div>
-              <div>* 자세한 내용은 <a href='https://cafe.naver.com/guamfree/335157'>드림렌트카 예약안내</a>에서 확인해주세요.</div>
-              <div>* 렌트기간 30일 이상의 장기렌트일 경우 메일로 별도 문의 바랍니다. &lt;<a href='mailto:tillpark3@naver.com'>tillpark3@naver.com</a>&gt;</div>
             </div>
-            <br />
             <PriceTable
               category="컴팩트"
-              cars="미츠비, 미라지"
               reservePrice={10} // 예약금액
               onSitePay={45} // 현장지불
               onSitePayInsurance={63} // 현장지불 (+보험)
@@ -214,7 +212,6 @@ function App() {
               hours={hours} />
             <PriceTable
               category="미드사이즈"
-              cars="마즈다3, 현대 엘란트라"
               reservePrice={10}
               onSitePay={50}
               onSitePayInsurance={76}
@@ -224,7 +221,6 @@ function App() {
               hours={hours} />
             <PriceTable
               category="풀사이즈"
-              cars="마즈다6"
               reservePrice={10}
               onSitePay={59}
               onSitePayInsurance={85}
@@ -234,7 +230,6 @@ function App() {
               hours={hours} />
             <PriceTable
               category="SUV"
-              cars="마즈다 CX5"
               reservePrice={11}
               onSitePay={66}
               onSitePayInsurance={78}
@@ -244,7 +239,6 @@ function App() {
               hours={hours} />
             <PriceTable
               category="미니밴"
-              cars=""
               reservePrice={20}
               onSitePay={145}
               onSitePayInsurance={165}

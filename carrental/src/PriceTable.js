@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 
 function PriceTable(props) {
@@ -7,8 +8,7 @@ function PriceTable(props) {
       <hr />
       <br />
       <h3 style={{ textAlign:'left', fontWeight:500 }}>
-        {props.category}&nbsp;
-        <small style={{ fontSize:'14px', color:'#A5A5A5', fontWeight:600 }}>{props.cars}</small>
+        {props.category}
       </h3>
       <br />
       <h6>카페요금</h6>
@@ -21,8 +21,8 @@ function PriceTable(props) {
         </thead>
         <tbody>
           <tr>
-            <td colSpan={2}>${props.reservePrice*props.days+props.onSitePay*props.days}</td>
-            <td colSpan={2}>${props.reservePrice*props.days+props.onSitePayInsurance*props.days}</td>
+            <td colSpan={2}>${props.hours > 0 ? (props.reservePrice*props.days+props.onSitePay*(props.days+1)).toFixed(1):(props.reservePrice*props.days+props.onSitePay*props.days).toFixed(1)}</td>
+            <td colSpan={2}>${props.hours > 0 ? ((props.reservePrice+props.onSitePayInsurance)*(props.days+1)):((props.reservePrice+props.onSitePayInsurance)*(props.days))}</td>
           </tr>
         </tbody>
         <thead>
@@ -35,10 +35,10 @@ function PriceTable(props) {
         </thead>
         <tbody>
           <tr>
-            <td>${props.reservePrice*props.days}</td>
-            <td>${props.onSitePay*props.days+10*props.hours}</td>
-            <td>${props.reservePrice*props.days}</td>
-            <td>${props.onSitePayInsurance*props.days+10*props.hours}</td>
+            <td id='price1'>${props.hours > 0 ? (props.reservePrice*(props.days+1)).toFixed(1):(props.reservePrice*props.days).toFixed(1)}</td>
+            <td id='price2'>${props.hours > 0 ? (props.onSitePay*(props.days+1)).toFixed(1):(props.onSitePay*(props.days)).toFixed(1)}</td>
+            <td id='insurance-price1'>${props.hours > 0 ? (props.reservePrice*(props.days+1)).toFixed(1):(props.reservePrice*props.days).toFixed(1)}</td>
+            <td id='insurance-price2'>${props.hours > 0 ? (props.onSitePayInsurance*(props.days+1)).toFixed(1):(props.onSitePayInsurance*(props.days)).toFixed(1)}</td>
           </tr>
         </tbody>
       </Table>
