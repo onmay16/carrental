@@ -89,11 +89,11 @@ function App() {
   return (
     <div className="App">
       <meta charSet="utf-8" />
-      <title>괌자길 드림렌트카 견적계산기</title>
+      <title>괌자길 버젯렌트카 견적계산기</title>
       <Navbar style={{ backgroundColor:'#343A3F' }}>
         <Container>
           <Navbar.Brand>
-            <span style={{ color:'#FFFFFF' }}>괌자길 버젯렌트가 </span>
+            <span style={{ color:'#FFFFFF' }}>괌자길 버젯렌트카 </span>
             <span style={{ fontSize: "15px", color:'#FFFFFF' }}>견적계산기</span>
           </Navbar.Brand>
         </Container>
@@ -190,9 +190,7 @@ function App() {
             <ListGroup.Item className='list-group-item' style={{ backgroundColor: '#F5F5F5' }}>
               <h6>렌트기간</h6>
               <div style={{ fontWeight:'800' }}>
-                {days}일
-                {(hours>0.5 && hours<7 && days<3) ?<span>+ {Math.floor(hours)}시간</span> : null}
-                {(hours && hours<7 && days<3 && hours%1 !== 0 ? <span> 30분</span>:null)}
+                {hours > 0 ? days+1:days}일
               </div>
             </ListGroup.Item>
           </ListGroup>
