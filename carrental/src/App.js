@@ -20,7 +20,6 @@ function App() {
 
   const [minTime, setMinTime] = useState(new Date());
   const [maxTime, setMaxTime] = useState(new Date());
-  // const [excludedTime, setExcludedTime] = useState([]);
 
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
@@ -31,13 +30,6 @@ function App() {
     const calculatedDays = Math.floor(totalHours / 24)
     const calculatedHours = (totalHours % 24).toFixed(1);
 
-    // if (calculatedHours >= 7) {
-    //   setDays(calculatedDays+1);
-    //   setHours(0);
-    // } else {
-    //   setDays(calculatedDays)
-    //   setHours(calculatedHours)
-    // }
     setDays(calculatedDays)
     setHours(calculatedHours)
   }
