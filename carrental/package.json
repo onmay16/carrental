@@ -21,7 +21,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "yarn build"
   },
-  "homepage": "https://onmay16.github.io/carrental/",
+  "homepage": "https://tops1950.github.io/carrental/",
   "eslintConfig": {
     "extends": [
       "react-app",
