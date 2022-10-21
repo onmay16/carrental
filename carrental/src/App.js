@@ -63,13 +63,13 @@ function App() {
     // setExcludedTime(notAvailableTime);
   }, [])
 
-  useEffect(() => {
-    dateCalculator(startDate, endDate)
-    if (days === 0 && hours < 7 && selected) {
-      alert("렌트 시간을 7시간 이상으로 설정해 주세요.");
-      endDate.setDate(startDate.getDate()+1);
-    }
-  }, [startDate, endDate])
+  //useEffect(() => {
+  //  dateCalculator(startDate, endDate)
+  //  if (days === 0 && hours < 7 && selected) {
+  //    alert("렌트 시간을 7시간 이상으로 설정해 주세요.");
+  //    endDate.setDate(startDate.getDate()+1);
+  //  }
+  //}, [startDate, endDate])
 
   useEffect(() => {
     if (startDate > endDate) {
