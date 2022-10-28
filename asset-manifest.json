@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/carrental/static/css/main.c587f22c.css",
-    "main.js": "/carrental/static/js/main.b0c2d10a.js",
+    "main.js": "/carrental/static/js/main.b9d9e1fd.js",
     "index.html": "/carrental/index.html",
     "main.c587f22c.css.map": "/carrental/static/css/main.c587f22c.css.map",
-    "main.b0c2d10a.js.map": "/carrental/static/js/main.b0c2d10a.js.map"
+    "main.b9d9e1fd.js.map": "/carrental/static/js/main.b9d9e1fd.js.map"
   },
   "entrypoints": [
     "static/css/main.c587f22c.css",
-    "static/js/main.b0c2d10a.js"
+    "static/js/main.b9d9e1fd.js"
   ]
 }
