@@ -18,9 +18,6 @@ function App() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  const [minTime, setMinTime] = useState(new Date());
-  const [maxTime, setMaxTime] = useState(new Date());
-
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [selected, setSelected] = useState(false);
@@ -36,39 +33,18 @@ function App() {
 
   useEffect(() => {
 
-    startDate.setDate(startDate.getDate()+2);
+    startDate.setDate(startDate.getDate());
     startDate.setHours(10);
     startDate.setMinutes(0);
 
-    endDate.setDate(startDate.getDate()+2);
+    endDate.setDate(endDate.getDate() + 1);
     endDate.setHours(10);
     endDate.setMinutes(0);
 
-    minTime.setHours(8);
-    minTime.setMinutes(0);
-
-    maxTime.setHours(18);
-    maxTime.setMinutes(30);
-
-    // const notAvailableTime = []
-    // for (let count = 3; count < 8; count += 0.5) {
-    //   let time = new Date()
-    //   if (count % 1 !== 0) {
-    //     time.setHours(Math.floor(count), 30, 0);
-    //   } else {
-    //     time.setHours(Math.floor(count), 0, 0);
-    //   }
-    //   notAvailableTime.push(time);
-    // };
-    // setExcludedTime(notAvailableTime);
   }, [])
 
   useEffect(() => {
     dateCalculator(startDate, endDate)
-    if (days === 0 && hours < 7 && selected) {
-      alert("렌트 시간을 7시간 이상으로 설정해 주세요.");
-      endDate.setDate(startDate.getDate()+1);
-    }
   }, [startDate, endDate])
 
   useEffect(() => {
@@ -78,15 +54,21 @@ function App() {
     }
   }, [endDate])
 
+  useEffect(() => {
+    if (startDate > endDate) {
+      setEndDate(startDate)
+    }
+  })
+
   return (
     <div className="App">
       <meta charSet="utf-8" />
       <title>괌자길 버젯렌트카 견적계산기</title>
-      <Navbar style={{ backgroundColor:'#343A3F' }}>
+      <Navbar style={{ backgroundColor: '#343A3F' }}>
         <Container>
           <Navbar.Brand>
-            <span style={{ color:'#FFFFFF' }}>괌자길 버젯렌트카 </span>
-            <span style={{ fontSize: "15px", color:'#FFFFFF' }}>견적계산기</span>
+            <span style={{ color: '#FFFFFF' }}>괌자길 버젯렌트카 </span>
+            <span style={{ fontSize: "15px", color: '#FFFFFF' }}>견적계산기</span>
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -108,7 +90,8 @@ function App() {
                 popperModifiers={{
                   preventOverflow: {
                     enabled: true,
-                }}}
+                  }
+                }}
                 dateFormat=" yyyy-MM-dd"
                 locale='ko' />
 
@@ -125,8 +108,6 @@ function App() {
                 showTimeSelect
                 showTimeSelectOnly
                 dateFormat=" HH:mm"
-                // minTime={minTime}
-                // maxTime={maxTime}
                 timeIntervals={30}
                 popperProps={{
                   positionFixed: true
@@ -134,7 +115,8 @@ function App() {
                 popperModifiers={{
                   preventOverflow: {
                     enabled: true,
-                }}}
+                  }
+                }}
                 timeCaption="시간"
                 locale='ko' />
             </ListGroup.Item>
@@ -143,7 +125,7 @@ function App() {
               <DatePicker
                 className='date-picker'
                 selected={endDate}
-                onSelect={(date) => {setEndDate(date)}}
+                onSelect={(date) => { setEndDate(date) }}
                 minDate={startDate}
                 popperProps={{
                   positionFixed: true
@@ -151,7 +133,8 @@ function App() {
                 popperModifiers={{
                   preventOverflow: {
                     enabled: true,
-                }}}
+                  }
+                }}
                 dateFormat=" yyyy-MM-dd"
                 locale='ko' />
             </ListGroup.Item>
@@ -174,72 +157,83 @@ function App() {
                 popperModifiers={{
                   preventOverflow: {
                     enabled: true,
-                }}}
+                  }
+                }}
                 timeCaption="시간"
                 dateFormat=" HH:mm"
                 locale='ko' />
             </ListGroup.Item>
             <ListGroup.Item className='list-group-item' style={{ backgroundColor: '#F5F5F5' }}>
               <h6>렌트기간</h6>
-              <div style={{ fontWeight:'800' }}>
-                {hours > 0 ? days+1:days}일
+              <div style={{ fontWeight: '800' }}>
+                {hours > 0 ? days + 1 : days}일
               </div>
             </ListGroup.Item>
           </ListGroup>
-          <div className='space'/>
-          <div style={{ margin:'auto', width:'670px' }}>
-            <div style={{ textAlign:'left', color: 'red', fontWeight:600 }}>
+          <div className='space' />
+          <div style={{ margin: 'auto', width: '670px' }}>
+            <div style={{ textAlign: 'left', color: 'red', fontWeight: 600 }}>
               <div>* 견적계산기는 렌트 비용 참고용입니다.</div>
             </div>
             <PriceTable
-              category="컴팩트"
-              reservePrice={10} // 예약금액
-              onSitePay={45} // 현장지불
-              onSitePayInsurance={63} // 현장지불 (+보험)
-              defaultPrice={55} //기본요금
-              defaultPriceInsurance={73} //기본요금 (+보험)
-              days={days}
-              hours={hours} />
-            <PriceTable
               category="미드사이즈"
               reservePrice={10}
-              onSitePay={50}
+              onSitePay={65}
               onSitePayInsurance={76}
-              defaultPrice={60}
+              defaultPrice={75}
               defaultPriceInsurance={86}
               days={days}
               hours={hours} />
             <PriceTable
               category="풀사이즈"
               reservePrice={10}
-              onSitePay={59}
+              reservePriceInsurance={12}
+              onSitePay={80}
               onSitePayInsurance={85}
-              defaultPrice={69}
+              defaultPrice={90}
               defaultPriceInsurance={97}
               days={days}
               hours={hours} />
             <PriceTable
               category="SUV"
-              reservePrice={11}
-              onSitePay={66}
+              reservePrice={10}
+              onSitePay={80}
               onSitePayInsurance={78}
-              defaultPrice={77}
+              defaultPrice={90}
               defaultPriceInsurance={89}
               days={days}
               hours={hours} />
             <PriceTable
               category="미니밴"
               reservePrice={20}
-              onSitePay={145}
+              onSitePay={120}
               onSitePayInsurance={165}
-              defaultPrice={165}
+              defaultPrice={140}
               defaultPriceInsurance={185}
+              days={days}
+              hours={hours} />
+            <PriceTable
+              category="컨버터블 (CAMARO)"
+              reservePrice={20}
+              onSitePay={110}
+              onSitePayInsurance={0}
+              defaultPrice={130}
+              defaultPriceInsurance={0}
+              days={days}
+              hours={hours} />
+            <PriceTable
+              category="미드 SUV (BMW X3)"
+              reservePrice={20}
+              onSitePay={110}
+              onSitePayInsurance={0}
+              defaultPrice={130}
+              defaultPriceInsurance={0}
               days={days}
               hours={hours} />
           </div>
         </div>
       </div>
-      <footer style={{ backgroundColor:'#343A3F', color:'#ffffff', paddingTop:'16px', paddingBottom:'16px', fontWeight:600 }}>Copyright © 괌자길 2020</footer>
+      <footer style={{ backgroundColor: '#343A3F', color: '#ffffff', paddingTop: '16px', paddingBottom: '16px', fontWeight: 600 }}>Copyright © 괌자길 2020</footer>
     </div>
   );
 }
