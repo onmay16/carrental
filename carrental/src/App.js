@@ -178,7 +178,7 @@ function App() {
             <PriceTable
               category="미드사이즈"
               reservePrice={10}
-              onSitePay={65}
+              onSitePay={55}
               onSitePayInsurance={76}
               defaultPrice={75}
               defaultPriceInsurance={86}
@@ -188,7 +188,7 @@ function App() {
               category="풀사이즈"
               reservePrice={10}
               reservePriceInsurance={12}
-              onSitePay={80}
+              onSitePay={65}
               onSitePayInsurance={85}
               defaultPrice={90}
               defaultPriceInsurance={97}
@@ -197,7 +197,7 @@ function App() {
             <PriceTable
               category="SUV"
               reservePrice={10}
-              onSitePay={80}
+              onSitePay={70}
               onSitePayInsurance={78}
               defaultPrice={90}
               defaultPriceInsurance={89}
@@ -206,7 +206,7 @@ function App() {
             <PriceTable
               category="미니밴"
               reservePrice={20}
-              onSitePay={120}
+              onSitePay={110}
               onSitePayInsurance={165}
               defaultPrice={140}
               defaultPriceInsurance={185}
@@ -215,7 +215,7 @@ function App() {
             <PriceTable
               category="컨버터블 (CAMARO)"
               reservePrice={20}
-              onSitePay={110}
+              onSitePay={105}
               onSitePayInsurance={0}
               defaultPrice={130}
               defaultPriceInsurance={0}
@@ -224,7 +224,7 @@ function App() {
             <PriceTable
               category="미드 SUV (BMW X3)"
               reservePrice={20}
-              onSitePay={110}
+              onSitePay={105}
               onSitePayInsurance={0}
               defaultPrice={130}
               defaultPriceInsurance={0}
